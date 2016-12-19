@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Album{% endblock %}</title>
+        <link rel="stylesheet" href="{{ asset('style/css/screen.css') }}"/>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+      <div id="siteBox">
+        <div id="header">
+          <h1 class="title"> Album </h1>
+        </div>
+        <div id="menu">
+          {% if app.user %}
+            <a id="logoutlink"href="{{ path('logout') }}">Logout</a>
+          {% else %}
+            <a id="loginlink"href="{{ path('mdw_login') }}">Login</a>
+            <a id="registerlink"href="{{ path('mdw_register_user') }}">Registrarse</a>
+          {% endif %}
+        </div>
+        <div id="content">
+          <div id="news">
+            <div id="block">
+              <h1> Menu </h1>
+              {% block menuI %}
+              <a id="indexlink"href="{{ path('mdw_index') }}">Inicio</a></br>
+              {% if app.user %} <a id="uploadlink" href="{{ path('album_upload') }}">Subir Foto</a></br> {% endif %}
+              {% if is_granted('ROLE_ADMIN') %} <a id="adminlink"href="{{ path('mdw_admin') }}">Admin</a></br> {% endif %}
+
+              {% endblock %}
+              <div class="bottom">&nbsp;</div>
+            </div>
+          </div>
+          <div id="text">
+            {% block content %}
+
+            {% endblock %}
+            <p id="footer"> Iker Moya y Jose Augusto Ena | Cpyright © 2016 | All Rights Reserved  </p>
+          </div>
+        </div>
+        {% block javascripts %}{% endblock %}
+      </div>
+    </body>
+</html>

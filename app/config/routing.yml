@@ -1,0 +1,21 @@
+album:
+    resource: "@AlbumBundle/Resources/config/routing.yml"
+    prefix:   /album
+
+mdw_register:
+    resource: "@MDWRegisterBundle/Resources/config/routing.yml"
+    prefix:   /user
+
+mdw_login:
+    pattern:  /login
+    defaults: { _controller: MDWRegisterBundle:Login:login}
+
+login_check:
+    pattern:   /login_check
+
+logout:
+    pattern:   /logout
+
+mdw_index:
+    pattern:  /
+    defaults: { _controller: MDWRegisterBundle:Default:index}

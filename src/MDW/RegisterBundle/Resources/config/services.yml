@@ -1,0 +1,4 @@
+services:
+#    mdw_register.example:
+#        class: MDW\RegisterBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

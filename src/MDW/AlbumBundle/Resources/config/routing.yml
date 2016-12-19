@@ -1,0 +1,3 @@
+album_upload:
+    pattern:  /upload
+    defaults: { _controller: AlbumBundle:Upload:upload}

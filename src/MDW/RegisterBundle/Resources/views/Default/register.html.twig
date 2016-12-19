@@ -1,0 +1,14 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+{% block content %}
+<center>
+<h1>Registrate!</h1>
+<form action="{{ path('mdw_register_user') }}" method="post">
+    {{ form_widget(form) }}
+    <button type="submit">Registrarse!</button>
+</form>
+
+</center>
+{% endblock content %}
+{% endblock %}

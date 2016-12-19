@@ -1,0 +1,16 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+{% block content %}
+<center>
+<h2>{{ message }}</h2></br>
+Volver atras -><a href="{{app.request.headers.get('referer')}}"> LINK </a>
+
+
+{% endblock content %}
+{% endblock %}
+{% block javascripts %}
+<script>
+$('#homelink').addClass('selected')
+</script>
+{% endblock %}

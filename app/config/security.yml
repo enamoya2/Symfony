@@ -1,0 +1,52 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+jms_security_extra:
+      secure_all_services: false
+      expressions: true
+security:
+
+    encoders:
+        MDW\RegisterBundle\Entity\User:
+            algorithm: bcrypt
+            cost: 12
+
+    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    providers:
+        base_datos_provider:
+            entity:
+                class: MDWRegisterBundle:User
+                property: username
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+            provider: base_datos_provider
+
+
+        default:
+            pattern: ^/
+            form_login:
+              login_path: /login
+              check_path: /login_check
+              default_target_path: /
+            logout:
+              path: /logout
+              target: /
+            anonymous: true
+
+
+    access_control:
+        # require ROLE_ADMIN for /admin*
+        - { path: ^/user/admin, roles: ROLE_ADMIN }
+        - { path: /login$, access: "!isAuthenticated()" }
+        - { path: /user/register$, access: "!isAuthenticated()" }
+        - { path: ^/album/upload, access: "isAuthenticated()" }
+            # activate different ways to authenticate
+
+            # http_basic: ~
+            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
+
+            # form_login: ~
+            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html

@@ -1,0 +1,12 @@
+
+mdw_register_user:
+    pattern:  /register
+    defaults: { _controller: MDWRegisterBundle:Register:register}
+
+mdw_message:
+    pattern:  /message
+    defaults: { _controller: MDWRegisterBundle:Default:message}
+
+mdw_admin:
+    pattern:  /admin
+    defaults: { _controller: MDWRegisterBundle:Default:admin}
