@@ -221,11 +221,12 @@ class Imagen
     // target filename to move to
       $this->getFile()->move(
       $this->getUploadRootDir(),
-      $this->getFile()->getClientOriginalName()
+      //$this->getFile()->getClientOriginalName()
+      $this->getNombre()
       );
 
     // set the path property to the filename where you've saved the file
-      $this->path = $this->getFile()->getClientOriginalName();
+      $this->path = $this->getNombre();
 
     // limpia la propiedad «file» ya que no la necesitas más
       $this->file = null;
